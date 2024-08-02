@@ -10,4 +10,3 @@
     2. excelData에 결과로 나올 pdf들의 제목에 사용될 정보가 적힌 excel파일을 둔다
     3. app.js 프로그램 실행
     4. result에 그 결과가 저장된다
-# pdf_page_split
