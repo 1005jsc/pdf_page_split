@@ -3,14 +3,15 @@ import path from 'path';
 import fs from 'fs';
 import { filePath, projectPath } from '../utils/pathConfig.js';
 
-async function splitPdf(pathToPdf, arr) {
+async function splitPdf(pathToPdf, arr, year) {
+  console.log('pathToPdf : ' + pathToPdf);
   const docmentAsBytes = await fs.promises.readFile(pathToPdf);
 
   // Load your PDFDocument
   const pdfDoc = await PDFDocument.load(docmentAsBytes);
 
   const numberOfPages = pdfDoc.getPages().length;
-
+  // const numberOfPages = 29;
   for (let i = 0; i < numberOfPages; i++) {
     //   for (let i = 0; i < 2; i++) {
     // Create a new "sub" document
@@ -24,7 +25,7 @@ async function splitPdf(pathToPdf, arr) {
 
     const resultPdfPathname = filePath(
       path.join(projectPath, 'result'),
-      `위촉장_${arr[i].name}.pdf`
+      `${year} 위촉장_${arr[i].name}.pdf`
     );
 
     await writePdfBytesToFile(resultPdfPathname, pdfBytes);

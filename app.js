@@ -4,20 +4,21 @@ import readExcel from './excelRead/excelRead.js';
 import splitPdf from './splitPdf/splitPdf.js';
 import { filePath, projectPath } from './utils/pathConfig.js';
 
-const run = async (pdfName) => {
+const run = async (excelName, pdfName, year) => {
   /// 1. excel을 배열 데이터로 받아
-  const excelDataArr = readExcel('data.xls');
-  // console.log(yo);
-  // 2. splitPdf에 배열을 넣는다
+  const excelDataArr = readExcel(excelName);
 
-  //   console.log(yo);
-
-  // 'C:/Users/hoope/Desktop/script2/pdf/위촉장_OOO_388건.pdf'
+  console.log(projectPath);
 
   const pdfFilePath = filePath(path.join(projectPath, 'pdf'), pdfName);
 
-  //   console.log(pdfFilePath);
-  await splitPdf(pdfFilePath, excelDataArr);
+  console.log(pdfFilePath);
+  await splitPdf(pdfFilePath, excelDataArr, year);
 };
 
-run('채용 공고문.pdf');
+// 예시
+run('sample_data.xlsx', 'sample.pdf', '2025');
+
+// run('triple_list.xlsx', '3부문통합_위촉장.pdf', '2025');
+// run('YD_list.xlsx', 'YD_위촉장.pdf', '2025');
+// run('KD_list.xlsx', 'KD_위촉장.pdf', '2025');

@@ -9,6 +9,8 @@ const readExcel = (excelName) => {
     excelName
   );
 
+  // console.log(excelFilePath);
+
   const workbook = xlsx.readFile(excelFilePath);
 
   // 1. worksheet 파악하기
